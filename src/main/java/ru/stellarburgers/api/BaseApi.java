@@ -1,4 +1,4 @@
-package api;
+package ru.stellarburgers.api;
 
 import io.restassured.RestAssured;
 import io.restassured.specification.RequestSpecification;

@@ -1,4 +1,4 @@
-package api;
+package ru.stellarburgers.api;
 
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;

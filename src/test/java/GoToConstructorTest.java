@@ -14,10 +14,12 @@ import ru.stellarburgers.pages.PersonalAccountPage;
 import static ru.stellarburgers.constants.UrlConstants.LOGIN_PAGE;
 import static org.junit.Assert.assertEquals;
 
-public class LogoutTest {
+public class GoToConstructorTest {
     private WebDriver driver;
     private RequestsApi requestsApi;
+    private MainPage mainPage;
     private Response response;
+    private PersonalAccountPage profile;
 
     @Before
     public void startTest() {
@@ -30,19 +32,27 @@ public class LogoutTest {
         driver.get(LOGIN_PAGE);
         LoginForm loginForm = new LoginForm(driver);
         loginForm.userLogin(user.getEmail(), user.getPassword());
-        MainPage mainPage = new MainPage(driver);
+        mainPage = new MainPage(driver);
         mainPage.clickOnButtonPersonalAccount();
+        profile = new PersonalAccountPage(driver);
     }
 
     @Test
-    @DisplayName("Successful logout")
-    @Description("Successful logout from personal account")
-    public void testSuccessfulLogout() {
-        PersonalAccountPage profile = new PersonalAccountPage(driver);
-        profile.clickLogoutButton();
-        LoginForm loginForm = new LoginForm(driver);
-        assertEquals("Войти", loginForm.checkVisibilityOfLoginButton());
+    @DisplayName("Open constructor by logo Stellar Burgers")
+    @Description("Successful open constructor by clicking on the Stellar Burgers logo")
+    public void testSuccessfulOpenConstructorByLogoStellarBurgers() {
+        profile.clickLogoStellarBurgers();
+        assertEquals("Соберите бургер", mainPage.checkVisibilityOfAssembleTheBurger());
     }
+
+    @Test
+    @DisplayName("Open constructor by constructor button")
+    @Description("Successful open constructor by clicking on constructor button")
+    public void testSuccessfulOpenConstructorByConstructorButton() {
+        profile.clickConstructorButton();
+        assertEquals("Соберите бургер", mainPage.checkVisibilityOfAssembleTheBurger());
+    }
+
 
     @After
     public void afterTest() {
@@ -50,4 +60,3 @@ public class LogoutTest {
         requestsApi.deleteUserAfterTest(response);
     }
 }
-

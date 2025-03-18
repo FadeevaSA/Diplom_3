@@ -1,4 +1,4 @@
-package constants;
+package ru.stellarburgers.constants;
 
 public class UrlConstants {
     public static final String MAIN_PAGE = "https://stellarburgers.nomoreparties.site/";

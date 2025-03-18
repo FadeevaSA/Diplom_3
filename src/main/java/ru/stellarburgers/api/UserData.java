@@ -1,4 +1,4 @@
-package api;
+package ru.stellarburgers.api;
 
 public class UserData {
     private String email;

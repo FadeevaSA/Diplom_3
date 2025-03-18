@@ -1,4 +1,4 @@
-package pageObject;
+package ru.stellarburgers.pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.*;
@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import static constants.UrlConstants.LOGIN_PAGE;
+import static ru.stellarburgers.constants.UrlConstants.LOGIN_PAGE;
 
 public class RegistrationForm {
     private final WebDriver driver;
@@ -16,8 +16,7 @@ public class RegistrationForm {
     private final By fieldPassword = By.xpath("//input[@name='Пароль']");
     private final By registerButton = By.xpath("//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa' and text()='Зарегистрироваться']");
     private final By passwordError = By.className("input__error");
-
-    public static final By BUTTON_LOGIN_REGISTRATION_FORM = By.xpath("//a[@href='/login']");
+    private final By buttonLoginRegistrationForm = By.xpath("//a[@href='/login']");
 
     public RegistrationForm(WebDriver driver) {
         this.driver = driver;
@@ -41,6 +40,11 @@ public class RegistrationForm {
     @Step("Click the register button")
     public void clickOnRegisterButton() {
         driver.findElement(registerButton).click();
+    }
+
+    @Step("Click the login button")
+    public void clickLoginButton() {
+        driver.findElement(buttonLoginRegistrationForm).click();
     }
 
     @Step("Check password error display and get text")
